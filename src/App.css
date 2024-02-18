@@ -1,0 +1,182 @@
+.customCursor {
+  position: fixed;
+  pointer-events: none;
+  z-index: 9999;
+}
+
+.cursorHighlight {
+  width: 700px; /* Adjust the width and height to control the size of the flashlight */
+  height: 700px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(254, 162, 249, 0.6) 40%, rgba(255, 255, 255, 0)); /* Use radial gradient with transparent center */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 0 400px 200px rgba(254, 162, 249, 0.2), /* Outer glow effect */
+              0 0 400px 200px rgba(254, 162, 249, 0.2); /* Additional outer glow effect */
+  transition: width 0.15s, height 0.15s, opacity 0.15s; /* Add opacity to the transition */
+  opacity: 0.1; /* Initial opacity */
+}
+
+/* Add any other styles for your cursor here */
+
+/* App.css */
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Ensure the container takes up the full height of the viewport */
+}
+
+.logo {
+  font-size: 7rem; /* Adjust the font size as needed */
+  font-weight: bold;
+}
+
+/* App.css */
+.logo-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+/* App.css */
+@keyframes rgbAnimation {
+  0% {
+    border-color: white; /* Start with white border */
+  }
+  16.66% {
+    border-color: rgb(152, 152, 152); /* Stay white for the first 4 seconds */
+  }
+  33.33% {
+    border-color: white; /* Transition to red at 4 seconds */
+  }
+  50% {
+    border-color: rgb(152, 152, 152); /* Stay red for the next 4 seconds */
+  }
+  66.66% {
+    border-color: white; /* Transition to green at 8 seconds */
+  }
+  83.33% {
+    border-color: #2EDBAA; /* Stay green for the next 4 seconds */
+  }
+  100% {
+    border-color: #2EDBAA; /* Transition to blue at 12 seconds */
+  }
+}
+
+.circle {
+  width: 175px; /* Initial larger size */
+  height: 175px; /* Initial larger size */
+  border: 3px solid transparent; /* Initially transparent */
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: transparent; /* Transparent color for initial appearance */
+  font-size: 2rem; /* Adjust the font size */
+  font-weight: bold;
+  animation: growCircle 3s forwards, rgbAnimation 6.5s infinite linear; /* Animation duration: 3 seconds */
+}
+
+.circle2 {
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: transparent; /* Transparent color for initial appearance */
+  font-size: 1rem; /* Adjust the font size */
+  font-weight: bold;
+  animation: growCircle 3s forwards, rgbAnimation 6.5s infinite linear; /* Animation duration: 3 seconds */
+}
+
+.circle::before,
+.circle::after {
+  content: "";
+  position: absolute;
+  top: -2px; /* Adjust these values for precise positioning */
+  left: -2px;
+  width: calc(100% + 4px); /* Adjust for border thickness */
+  height: calc(100% + 4px); /* Adjust for border thickness */
+  border-radius: 50%;
+  border: 2px solid transparent; /* Initially transparent */
+}
+
+.circle::before {
+  animation-delay: 4s; /* Delay the start of the RGB animation by 4 seconds */
+}
+
+.circle::after {
+  border-color: transparent; /* Initially transparent */
+}
+
+@keyframes growCircle {
+  from {
+    transform: scale(4); /* Start from 300% of normal size */
+  }
+  to {
+    transform: scale(2) rotate(360deg); /* Scale to normal size and rotate to 360 degrees */
+    border-color: #333; /* Set the color of the border when fully drawn */
+    color: hsl(0, 0%, 100%); /* Set the color of the P when fully drawn */
+  }
+}
+
+/* App.css */
+@keyframes slideUp {
+  from {
+    transform: translateY(50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.animate-name {
+  animation: slideUp 0.5s ease forwards;
+}
+
+.slide-up {
+  animation: slideUp 0.5s ease forwards;
+}
+
+.animate-menu {
+  animation: slideUp 0.5s ease forwards;
+}
+
+/* Add this to your CSS file */
+@keyframes slideUp {
+  0% {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-slide-up {
+  animation: slideUp 0.5s ease forwards;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
