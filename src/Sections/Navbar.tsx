@@ -9,21 +9,26 @@ const Navbar = () => {
         setIsMenuOpen(!isMenuOpen);
     };
 
+    const scrollToSection = (sectionId) => {
+        const section = document.getElementById(sectionId);
+        if (section) {
+            section.scrollIntoView({ behavior: 'smooth' });
+        }
+    };
+
     useEffect(() => {
-    const handleScroll = () => {
-        const currentScrollPos = window.pageYOffset;
-        const isScrollingUp = prevScrollPos > currentScrollPos;
-        setIsMenuOpen(isScrollingUp || currentScrollPos < 100);
-        setPrevScrollPos(currentScrollPos);
-    };
+        const handleScroll = () => {
+            const currentScrollPos = window.pageYOffset;
+            setIsMenuOpen(prevScrollPos > currentScrollPos || currentScrollPos < 100);
+            setPrevScrollPos(currentScrollPos);
+        };
 
-    window.addEventListener('scroll', handleScroll);
+        window.addEventListener('scroll', handleScroll);
 
-    return () => {
-        window.removeEventListener('scroll', handleScroll);
-    };
-}, [prevScrollPos]);
-
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        };
+    }, [prevScrollPos]);
 
     return (
         <div className={`bg-primarybg3 flex p-5 shadow-2xl transition-all duration-500 ${isMenuOpen ? 'opacity-100 transform translate-y-0' : 'opacity-0 transform -translate-y-full'}`}>
@@ -61,15 +66,15 @@ const Navbar = () => {
                     style={{ maxHeight: isMenuOpen ? '500px' : '0' }}
                 >
                     <ul className="flex flex-col sm:flex-row justify-between text-sm gap-x-3 gap-y-5 cursor-pointer">
-                        <div className="flex gap-x-1 font-bold">
+                        <div className="flex gap-x-1 font-bold hover:scale-110 transition-all" onClick={() => scrollToSection('about-sections')}>
                             <div className="text-primaryP2">01.</div>
                             <div className="text-gray-400 hover:text-primaryP2">About</div>
                         </div>
-                        <div className="flex gap-x-1 font-bold">
+                        <div className="flex gap-x-1 font-bold hover:scale-110 transition-all" onClick={() => scrollToSection('experience-sections')}>
                             <div className="text-primaryP2">02.</div>
                             <div className="text-gray-400 hover:text-primaryP2">Experience</div>
                         </div>
-                        <div className="flex gap-x-1 font-bold">
+                        <div className="flex gap-x-1 font-bold hover:scale-110 transition-all" onClick={() => scrollToSection('project-sections')}>
                             <div className="text-primaryP2">03.</div>
                             <div className="text-gray-400 hover:text-primaryP2">Project</div>
                         </div>
@@ -77,18 +82,18 @@ const Navbar = () => {
                 </nav>
             </div>
             {/* Second nav */}
-            <nav className={`hidden sm:flex ml-auto gap-x-5 animate-menu ${isMenuOpen ? 'slide-up' : ''}`}>
-                <div className="flex gap-x-1 font-bold">
+            <nav className={`hidden sm:flex ml-auto gap-x-5 animate-menu cursor-pointer ${isMenuOpen ? 'slide-up' : ''}`}>
+                <div className="flex gap-x-1 font-bold hover:scale-110 transition-all" onClick={() => scrollToSection('about-sections')}>
                     <div className="text-primaryP2">01.</div>
                     <div className="text-gray-400 hover:text-primaryP2">About</div>
                 </div>
-                <div className="flex gap-x-1 font-bold">
+                <div className="flex gap-x-1 font-bold hover:scale-110 transition-all" onClick={() => scrollToSection('experience-sections')}>
                     <div className="text-primaryP2">02.</div>
                     <div className="text-gray-400 hover:text-primaryP2">Experience</div>
                 </div>
-                <div className="flex gap-x-1 font-bold">
+                <div className="flex gap-x-1 font-bold hover:scale-110 transition-all" onClick={() => scrollToSection('project-sections')}>
                     <div className="text-primaryP2">03.</div>
-                    <div className="text-gray-400 hover:text-primaryP2">Project</div>
+                    <div className="text-gray-400 hover:text-primaryP2 ">Project</div>
                 </div>
             </nav>
         </div>

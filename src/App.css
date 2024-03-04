@@ -5,16 +5,16 @@
 }
 
 .cursorHighlight {
-  width: 700px; /* Adjust the width and height to control the size of the flashlight */
-  height: 700px;
+  width: 550px; /* Adjust the width and height to control the size of the flashlight */
+  height: 550px;
   border-radius: 50%;
   background: radial-gradient(circle, rgba(254, 162, 249, 0.6) 40%, rgba(255, 255, 255, 0)); /* Use radial gradient with transparent center */
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  box-shadow: 0 0 400px 200px rgba(254, 162, 249, 0.2), /* Outer glow effect */
-              0 0 400px 200px rgba(254, 162, 249, 0.2); /* Additional outer glow effect */
+  box-shadow: 0 0 300px 150px rgba(254, 162, 249, 0.2), /* Outer glow effect */
+              0 0 300px 150px rgba(254, 162, 249, 0.2); /* Additional outer glow effect */
   transition: width 0.15s, height 0.15s, opacity 0.15s; /* Add opacity to the transition */
   opacity: 0.1; /* Initial opacity */
 }
@@ -51,19 +51,19 @@
     border-color: rgb(152, 152, 152); /* Stay white for the first 4 seconds */
   }
   33.33% {
-    border-color: white; /* Transition to red at 4 seconds */
+    border-color: var(--neon-color); /* Transition to neon color at 4 seconds */
   }
   50% {
-    border-color: rgb(152, 152, 152); /* Stay red for the next 4 seconds */
+    border-color: var(--neon-color); /* Stay neon color for the next 4 seconds */
   }
   66.66% {
-    border-color: white; /* Transition to green at 8 seconds */
+    border-color: var(--neon-color); /* Transition to neon color again at 8 seconds */
   }
   83.33% {
-    border-color: #2EDBAA; /* Stay green for the next 4 seconds */
+    border-color: var(--neon-color); /* Stay neon color for the next 4 seconds */
   }
   100% {
-    border-color: #2EDBAA; /* Transition to blue at 12 seconds */
+    border-color: var(--neon-color); /* Transition to neon color again at 12 seconds */
   }
 }
 
@@ -163,8 +163,132 @@
   animation: slideUp 0.5s ease forwards;
 }
 
+@keyframes slide-up-fastest {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+@keyframes slide-up-fast {
+  from {
+    transform: translateY(80%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+/* Add more keyframes and animation classes for different speeds as needed */
+:root {
+  --neon-color: #2EDBAA; /* Define the neon color */
+}
+
+.neon-text {
+  color: var(--neon-color); /* Neon color */
+  text-shadow: 0 0 1px var(--neon-color), 0 0 5px var(--neon-color), 0 0 10px var(--neon-color), 0 0 15px var(--neon-color), 0 0 20px var(--neon-color), 0 0 25px var(--neon-color), 0 0 30px var(--neon-color), 0 0 35px var(--neon-color);
+}
+
+.neon-text2 {
+  text-shadow: 0 0 1px var(--neon-color), 0 0 1px var(--neon-color), 0 0 2px var(--neon-color), 0 0 3px var(--neon-color), 0 0 4px var(--neon-color), 0 0 5px var(--neon-color), 0 0 6px var(--neon-color), 0 0 7px var(--neon-color);
+}
+
+.neon-background {
+  background: linear-gradient(45deg, #2EDBAA, #00ffff);
+  box-shadow: 0 0 1px #2EDBAA, 0 0 2px #2EDBAA, 0 0 3px #2EDBAA, 0 0 4px #2EDBAA, 0 0 5px #2EDBAA, 0 0 6px #2EDBAA, 0 0 7px #2EDBAA;
+}
+
+.neon-outline {
+  position: relative;
+  color: #fff;
+  cursor: pointer;
+  transition: color 0.3s ease-out;
+}
+
+.neon-outline::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  border-radius: inherit;
+  background-color: #00ff00;
+  z-index: -1;
+  transition: opacity 0.3s ease-out;
+}
+
+.neon-outline:hover::before {
+  opacity: 1;
+}
+
+@keyframes neon {
+  0% {
+    box-shadow: 0 0 10px #00ff00, 0 0 20px #00ff00, 0 0 30px #00ff00, 0 0 40px #00ff00, 0 0 70px #00ff00, 0 0 80px #00ff00, 0 0 100px #00ff00, 0 0 150px #00ff00;
+  }
+  100% {
+    box-shadow: 0 0 5px #00ff00, 0 0 10px #00ff00, 0 0 15px #00ff00, 0 0 20px #00ff00, 0 0 35px #00ff00, 0 0 40px #00ff00, 0 0 50px #00ff00, 0 0 75px #00ff00;
+  }
+}
+
+@keyframes fadeOpacity {
+  from {
+    opacity: 0.7;
+  }
+  to {
+    opacity: 0.2;
+  }
+}
+
+.fade-opacity {
+  animation: fadeOpacity 0.2s ease-in-out forwards;
+}
+
+@keyframes fadeOpacity2 {
+  from {
+    opacity: 1;
+    transform: translateX(0%);
+  }
+  to {
+    opacity: 0;
+    transform: translateX(-8%);
+  }
+}
+
+.fade-opacity2 {
+  animation: fadeOpacity2 0.3s ease-in-out forwards;
+}
 
 
+@keyframes fadeOpacity3 {
+  from {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0%);
+  }
+}
+
+.fade-opacity3 {
+  animation: fadeOpacity3 0.3s ease-in-out forwards;
+}
+
+@keyframes fadeOpacity4 {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+.fade-opacity4 {
+  animation: fadeOpacity4 0.3s ease-in-out forwards;
+}
 
 
 

@@ -17,7 +17,7 @@ function App() {
 
     const timer2 = setTimeout(() => {
       setShowLogo(false);
-    }, 7000); 
+    }, 4500); 
 
     const timer3 = setTimeout(() => {
       setDisplayText('Po'); 
@@ -84,7 +84,7 @@ function App() {
       <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', position: 'absolute', top: 0, left: 0, right: 0, bottom: 0 }}>
         {showLogo && (
           <div className={`container ${isAnimated ? 'animated' : ''}`} style={{ transition: `transform 0.5s ${isAnimated ? '0s' : '0s'}`, transform: `scale(${isAnimated ? 1 : 0})` }}>
-            <div className={`container ${isAnimated ? 'animated' : ''}`} style={{ transition: `transform 0.5s ${isAnimated ? '5.5s' : '0s'}`, transform: `scale(${isAnimated ? 0 : 1})` }}>
+            <div className={`container ${isAnimated ? 'animated' : ''}`} style={{ transition: `transform 0.5s ${isAnimated ? '4s' : '0s'}`, transform: `scale(${isAnimated ? 0 : 1})` }}>
               <div className={`circle ${isAnimated ? 'animated' : ''} ${textColorClass}`} style={{ textAlign: 'center', width: '200px', height: '200px', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>{displayText}</div>
             </div>
           </div>
